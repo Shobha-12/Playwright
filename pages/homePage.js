@@ -23,15 +23,16 @@ export class HomePage{
     }
 
     async openExpiredTab(){
-        await this.activeTab.click();
+        await this.expiredTab.click();
     }
 
     async searchTest(testName) {
-        this.searchInput.click();
-        this.searchInput.fill(testName);
+        await this.page.waitForSelector('#search', { state: 'visible' });
+        await this.searchInput.click();
+        await this.searchInput.fill(testName);
     }
 
     async goToTheActiveTest(){
-        this.continueButton.click();
+        await this.continueButton.first().click();
     }
 }
